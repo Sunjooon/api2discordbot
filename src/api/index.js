@@ -1,15 +1,22 @@
 const express = require('express');
-
-const emojis = require('./emojis');
+const {Client, Intents, TextChannel} = require('discord.js')
 
 const router = express.Router();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] })
 
-router.get('/', (req, res) => {
+client.once('ready', () => {
+  console.log("ready to use!")
+})
+
+router.post('/sendmessage', (req, res) => {
+  console.log(req.body)
+  client.channels.cache.get(req.body.channel_id).send(req.body.other)
   res.json({
-    message: 'API - 👋🌎🌍🌏'
-  });
-});
+    message: "works!"
+  }).status(200)
+})
 
-router.use('/emojis', emojis);
+client.login(process.env.DISCORD_BOT)
 
 module.exports = router;
+
