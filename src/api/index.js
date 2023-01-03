@@ -16,7 +16,7 @@ router.post('/sendmessage', (req, res) => {
       message: "works!"
     }).status(200)
   } catch (err) {
-    console.log(err)
+    console.log('errored', req.body)
   }
 })
 
