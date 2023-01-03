@@ -9,15 +9,18 @@ client.once('ready', () => {
 })
 
 router.post('/sendmessage', (req, res) => {
-  try {
-    console.log(req.body)
+  new Promise((resolve, reject) => {
     client.channels.cache.get(req.body.channel_id).send(req.body.other)
     res.json({
       message: "works!"
     }).status(200)
-  } catch (err) {
-    console.log('errored', req.body)
-  }
+    resolve()
+  }).then(() => {
+    console.log("sent msg")
+  }).catch((err) => {
+    console.log({msg: err})
+  })
+
 })
 
 client.login(process.env.DISCORD_BOT)
