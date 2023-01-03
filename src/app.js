@@ -27,4 +27,8 @@ app.use('/api/v1', api);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
+process.on('uncaughtException', function (err) {
+  console.error(err);
+});
+
 module.exports = app;
