@@ -35,7 +35,11 @@ if (process.env.DISCORD_BOT_TOKEN) {
 
 // START EXPRESS SERVER
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+//app.listen(PORT, () => {
+ // console.log(`Listening: http://localhost:${PORT}`);
+//});
+
+app.listen(PORT, '0.0.0.0', () => {  // Add '0.0.0.0' for Heroku
   console.log(`Listening: http://localhost:${PORT}`);
 });
 
