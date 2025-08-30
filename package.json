@@ -31,20 +31,3 @@
     "node": ">=16.11.0"
   }
 }
-
-// .env.example
-DISCORD_BOT_TOKEN=your_bot_token_here
-PORT=3000
-NODE_ENV=production
-
-// .gitignore
-node_modules/
-.env
-.env.local
-*.log
-.DS_Store
-dist/
-build/
-coverage/
-.vscode/
-.idea/
